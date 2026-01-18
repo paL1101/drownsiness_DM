@@ -1,0 +1,28 @@
+APLIKASI DETEKSI KANTUK
+
+
+Urutan Pengerjaan (Supaya Pasti Jadi)
+
+1. Delete file venv yang ada di folder
+(kenapa di delete, karena itu file bekas dari laptop/perangkat lain dan kemungkinan tidak bisa dipakai di perangkat saat ini)
+
+2. kemudian buat file venv baru
+python -m venv venv
+
+3. masuk/aktif ke venv
+.\venv\Scripts\activate
+
+4. reinstall requirements
+pip install -r requirements.txt
+
+5. kalo tidak punya bisa install manual dahulu
+pip install opencv-python numpy scipy dlib imutils pygame
+
+6. Training model
+python src/train_rf.py --csv data/drowsiness_dataset.csv
+
+7. test index kamera ke berapa yang ok
+python src/test_camera.py  
+  
+8. Jalankan aplikasi real-time, bagian nomor camera diganti ama yg ok
+python src/realtime_app.py --camera 0(sesuaikan dari hasil test kamera) --task_model models/mediapipe/face_landmarker.task
